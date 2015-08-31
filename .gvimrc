@@ -1,5 +1,5 @@
 set showtabline=2
-set transparency=30
+set transparency=20
 set imdisable
 set guioptions-=T
 set antialias
@@ -8,6 +8,8 @@ set number
 set nobackup
 set visualbell t_vb=
 set nowrapscan
-set columns=100
+set columns=130
 set lines=48
 colorscheme jellybeans
+set guifont=Ricty:h14
+cd ~/Documents
