@@ -75,6 +75,8 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'dhruvasagar/vim-table-mode'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -253,3 +255,25 @@ set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v
 
 "新しいタブを開く
 nnoremap :tn :tabnew 
+
+"70字で改行する
+set formatoptions+=mM
+set textwidth=70
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
