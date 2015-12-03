@@ -1,5 +1,5 @@
-""新しい行のインデントを現在行と同じにする
-"set autoindent
+"新しい行のインデントを現在行と同じにする
+set autoindent
 
 "クリップボードをOSと連携する
 set clipboard+=unnamed
@@ -74,12 +74,13 @@ NeoBundle 'tell-k/vim-browsereload-mac'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'Shougo/neocomplete'
+NeoBundle 'dhruvasagar/vim-table-mode'
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
 
 filetype plugin indent on
-"set t_Co=256
+set t_Co=256
 syntax on
 colorscheme jellybeans
 
@@ -115,7 +116,7 @@ let NERDTreeShowHidden = 1
 "endif
 
 "他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a "google chrome"'
@@ -218,4 +219,37 @@ endif
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
+
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+"------------------------------------------------------------
+"https://github.com/dhruvasagar/vim-table-mode
+let mapleader = ","
+let g:table_mode_corner="|"
+
+"------------------------------------------------------------
+
+autocmd FileType text setlocal textwidth=78
+
+"カーソルを表示行で移動する。物理行移動は<C-n>,<C-p>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+
+"日本語の行の連結時には空白を入力しない。
+set formatoptions+=mM
+
+"□や○の文字があってもカーソル位置がずれないようにする。
+set ambiwidth=double
+
+"画面最後の行をできる限り表示する。
+set display+=lastline
+
+"ステータスラインにファイルエンコーディングやファイルフォーマット(改行コード)を表示
+set laststatus=2
+set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
+
+"新しいタブを開く
+nnoremap :tn :tabnew 
