@@ -10,6 +10,9 @@ set expandtab
 "タブ幅の設定
 set tabstop=4
 
+" タブを挿入するときの幅
+set shiftwidth=4
+
 "変更中のファイルでも、保存しないで他のファイルを表示する
 set hidden
 
