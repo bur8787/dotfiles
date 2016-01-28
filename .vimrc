@@ -80,6 +80,8 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'dhruvasagar/vim-table-mode'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle "tyru/caw.vim.git"
+NeoBundleLazy 'ervandew/eclim', {'build': {'mac': 'ant -Declipse.home=/opt/homebrew-cask/Caskroom/eclipse-java-442/4.4.2/eclipse -Dvim.files='.escape(expand('~/.bundle/eclim'), '')}}
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -121,8 +123,9 @@ let NERDTreeShowHidden = 1
 "endif
 
 "他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" previmの設定
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a "google chrome"'
 let g:vim_markdown_folding_disabled=1
@@ -137,7 +140,8 @@ let g:NERDTreeShowBookmarks=1
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-if has("gui_running")
+" macvimのウィンドウサイズを最大化。(Windows環境ではエラー発生)
+if has("gui_macvim")
     set fuoptions=maxvert,maxhorz
     au GUIEnter * set fullscreen
 endif
@@ -280,3 +284,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+"
+"keymap of tyru/caw.vim.git
+nmap <C-K> <Plug>(caw:i:toggle)
+vmap <C-K> <Plug>(caw:i:toggle)
+
+" eclim for java
+autocmd FileType java NeoBundleSource eclim
+
+" スワップファイルを作成しない
+set noswapfile
+
+" バックアップファイルを作成しない
+set nobackup
