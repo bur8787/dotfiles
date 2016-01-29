@@ -289,11 +289,14 @@ endif
 nmap <C-K> <Plug>(caw:i:toggle)
 vmap <C-K> <Plug>(caw:i:toggle)
 
-" eclim for java
-autocmd FileType java NeoBundleSource eclim
 
 " スワップファイルを作成しない
 set noswapfile
 
 " バックアップファイルを作成しない
 set nobackup
+
+"eclim for java
+autocmd FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+autocmd FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+autocmd FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
