@@ -1,4 +1,6 @@
 #!/bin/bash
 
-ln .vimrc ~/.vimrc
-ln .gvimrc ~/.gvimrc
+ln -s .vimrc ~/.vimrc
+ln -s .gvimrc ~/.gvimrc
+ln -s .ideavimrc ~/.ideavimrc
+ln -s .idea-config ~/.idea-config/

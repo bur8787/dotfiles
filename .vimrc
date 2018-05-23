@@ -263,9 +263,8 @@ set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=\ (%v
 "新しいタブを開く
 nnoremap :tn :tabnew 
 
-"70字で改行する
-set formatoptions+=mM
-set textwidth=70
+"自動改行しない
+set textwidth=0
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
