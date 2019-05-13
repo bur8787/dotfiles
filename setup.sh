@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ln -s .vimrc ~/.vimrc
-ln -s .gvimrc ~/.gvimrc
-ln -s .ideavimrc ~/.ideavimrc
-ln -s .idea-config ~/.idea-config/
-ln -s .bash_profile ~/.bash_profile
+ln -sf $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -sf $HOME/dotfiles/.gvimrc $HOME/.gvimrc
+ln -sf $HOME/dotfiles/.ideavimrc $HOME/.ideavimrc
+ln -sf $HOME/dotfiles/.idea-config $HOME/.idea-config
+ln -sf $HOME/dotfiles/.bash_profile $HOME/.bash_profile
