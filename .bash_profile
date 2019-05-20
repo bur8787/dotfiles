@@ -34,7 +34,22 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 #eval "$(goenv init -)"
 #export PATH=$PATH:$(go env GOPATH)/bin
 #export GOPATH=$(go env GOPATH)
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
-## Java
+# Java
 export JAVA_HOME=$(/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "11")
 PATH=${JAVA_HOME}/bin:${PATH}
+
+# ruby
+eval "$(rbenv init -)"
+
+# NodeJS
+eval "$(nodenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/suzuki/google-cloud-sdk/path.bash.inc' ]; then . '/Users/suzuki/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/suzuki/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/suzuki/google-cloud-sdk/completion.bash.inc'; fi
